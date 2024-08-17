@@ -16,10 +16,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/visitors', [VisitorController::class, 'index'])->name('visitors.index');
+    Route::get('/visitors/{code}', [VisitorController::class, 'show'])->name('visitors.show');
 });
 
-Route::get('/visitors', [VisitorController::class, 'index'])->middleware('auth');
-Route::get('/visitors/{code}', [VisitorController::class, 'show'])->middleware('auth');
-Route::post('/visitors', [VisitorController::class, 'store']);
+Route::post('/visitors', [VisitorController::class, 'store'])->name('visitors.store');
 
 require __DIR__.'/auth.php';
