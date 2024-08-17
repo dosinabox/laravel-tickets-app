@@ -6,6 +6,7 @@ use App\Models\Visitor;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Throwable;
 
 class VisitorController extends Controller
 {
@@ -14,11 +15,6 @@ class VisitorController extends Controller
         $visitors = Visitor::all();
 
         return response()->json($visitors);
-    }
-
-    public function create()
-    {
-        //
     }
 
     public function store(Request $request): JsonResponse
@@ -34,16 +30,16 @@ class VisitorController extends Controller
             $visitor->setEmail($request->email ?? '');
             $visitor->setCode();
             $visitor->save();
-        } catch (\Throwable $exception) {
+        } catch (Throwable $exception) {
             return response()->json([
                 'message' => 'Visitor not created: ' . $exception->getMessage()
-            ], Response::HTTP_BAD_REQUEST);
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
         if (!$visitor instanceof Visitor) {
             return response()->json([
                 'message' => 'Failed to create visitor.'
-            ]);
+            ], Response::HTTP_BAD_REQUEST);
         }
 
         return response()->json([
@@ -53,26 +49,89 @@ class VisitorController extends Controller
 
     public function show(string $code): JsonResponse
     {
-        $visitor = Visitor::where('code', $code)->first();
+        $visitor = Visitor::firstWhere('code', $code);
 
-        return !empty($visitor) ?
-            response()->json($visitor) :response()->json([
+        if (empty($visitor)) {
+            return response()->json([
                 'message' => 'Visitor not found.'
             ], Response::HTTP_NOT_FOUND);
+        }
+
+        return response()->json($visitor);
     }
 
-    public function edit(Visitor $visitor)
+    public function update(Request $request, int $id): JsonResponse
     {
-        //
+        $visitor = Visitor::find($id);
+
+        if (empty($visitor)) {
+            return response()->json([
+                'message' => 'Visitor not found.'
+            ], Response::HTTP_NOT_FOUND);
+        }
+
+        try {
+            if (isset($request->name)) {
+                $visitor->setName($request->name);
+            }
+            if (isset($request->lastName)) {
+                $visitor->setLastname($request->lastName);
+            }
+            if (isset($request->status)) {
+                $visitor->setStatus($request->status);
+            }
+            if (isset($request->company)) {
+                $visitor->setCompany($request->company);
+            }
+            if (isset($request->phone)) {
+                $visitor->setPhone($request->phone);
+            }
+            if (isset($request->telegram)) {
+                $visitor->setTelegram($request->telegram);
+            }
+            if (isset($request->email)) {
+                $visitor->setEmail($request->email);
+            }
+            if (isset($request->category)) {
+                $visitor->setCategory($request->category);
+            }
+            if (isset($request->isApproved)) {
+                $visitor->setIsApproved((bool)$request->isApproved);
+            }
+
+            $visitor->save();
+
+        } catch (Throwable $exception) {
+            return response()->json([
+                'message' => 'Visitor not updated: ' . $exception->getMessage()
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+
+        return response()->json([
+            'message' => 'Visitor updated.'
+        ], Response::HTTP_OK);
     }
 
-    public function update(Request $request, Visitor $visitor)
+    public function delete(int $id): JsonResponse
     {
-        //
-    }
+        $visitor = Visitor::find($id);
 
-    public function destroy(Visitor $visitor)
-    {
-        //
+        if (empty($visitor)) {
+            return response()->json([
+                'message' => 'Visitor not found.'
+            ], Response::HTTP_NOT_FOUND);
+        }
+
+        try {
+            $visitor->delete();
+        } catch (Throwable $exception) {
+            return response()->json([
+                'message' => 'Visitor not deleted: ' . $exception->getMessage()
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+
+        return response()->json([
+            'message' => 'Visitor deleted.'
+        ], Response::HTTP_OK);
     }
 }

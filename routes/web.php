@@ -21,5 +21,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::post('/visitors', [VisitorController::class, 'store'])->name('visitors.store');
+Route::post('/visitors/{id}', [VisitorController::class, 'update'])->name('visitors.update');
+Route::delete('/visitors/{id}', [VisitorController::class, 'delete'])->name('visitors.delete');
 
 require __DIR__.'/auth.php';
