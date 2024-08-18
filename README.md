@@ -22,6 +22,22 @@ npm run build
 ./vendor/bin/sail down
 ```
 
+## Authorization
+
+Create default user in database:
+```
+php artisan db:seed --class=DatabaseSeeder
+```
+
+Go to login page:
+```
+/login
+```
+
+Login: `admin@elestonia.com`
+
+Password: `812e3e7`
+
 ## Endpoints
 
 [GET] all visitors
@@ -44,7 +60,7 @@ npm run build
 /visitors/{id}
 ```
 
-[DELETE] one visitor by ID
+[DELETE] delete one visitor by ID
 ```
 /visitors/{id}
 ```
@@ -53,14 +69,3 @@ npm run build
 ```
 /search/{query}
 ```
-
-## Authorization
-
-Create default user in database:
-```
-php artisan db:seed --class=DatabaseSeeder
-```
-
-Login: `admin@elestonia.com`
-
-Password: `812e3e7`
