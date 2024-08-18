@@ -34,7 +34,7 @@ Go to login page:
 /login
 ```
 
-Login: `admin@elestonia.com`
+Email: `admin@elestonia.com`
 
 Password: `812e3e7`
 
