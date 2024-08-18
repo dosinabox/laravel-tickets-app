@@ -12,7 +12,9 @@ class VisitorController extends Controller
 {
     public function index(): JsonResponse
     {
-        $visitors = Visitor::all();
+        $visitors = Visitor::all()->map(function (Visitor $visitor) {
+            return $visitor->serialize();
+        });
 
         return response()->json($visitors);
     }
@@ -57,7 +59,7 @@ class VisitorController extends Controller
             ], Response::HTTP_NOT_FOUND);
         }
 
-        return response()->json($visitor);
+        return response()->json($visitor->serialize());
     }
 
     public function update(Request $request, int $id): JsonResponse

@@ -23,6 +23,11 @@ class Visitor extends Model
         'code'
     ];
 
+    public function getID(): int
+    {
+        return $this->id;
+    }
+
     public function getName(): ?string
     {
         return $this->name;
@@ -78,6 +83,11 @@ class Visitor extends Model
         return $this->code;
     }
 
+    public function getCreatedAt(): string
+    {
+        return date_create($this->created_at)->format('d.m.Y H:i');
+    }
+
     public function setName(string $name): void
     {
         $this->name = $name;
@@ -131,5 +141,24 @@ class Visitor extends Model
     public function setCode(): void
     {
         $this->code = $this->createCode();
+    }
+
+    public function serialize(): array
+    {
+        return [
+            'id' => $this->getID(),
+            'name' => $this->getName(),
+            'lastName' => $this->getLastName(),
+            'status' => $this->getStatus(),
+            'company' => $this->getCompany(),
+            'phone' => $this->getPhone(),
+            'telegram' => $this->getTelegram(),
+            'email' => $this->getEmail(),
+            'category' => $this->getCategory(),
+            'isApproved' => $this->getIsApproved(),
+            'isRejected' => $this->getIsRejected(),
+            'code' => $this->getCode(),
+            'created_at' => $this->getCreatedAt(),
+        ];
     }
 }
