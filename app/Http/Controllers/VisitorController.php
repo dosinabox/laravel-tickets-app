@@ -98,6 +98,9 @@ class VisitorController extends Controller
             if (isset($request->isApproved)) {
                 $visitor->setIsApproved((bool)$request->isApproved);
             }
+            if (isset($request->isRejected)) {
+                $visitor->setIsRejected((bool)$request->isRejected);
+            }
 
             $visitor->save();
 

@@ -19,6 +19,7 @@ class Visitor extends Model
         'email',
         'category',
         'isApproved',
+        'isRejected',
         'code'
     ];
 
@@ -65,6 +66,11 @@ class Visitor extends Model
     public function getIsApproved(): bool
     {
         return $this->isApproved;
+    }
+
+    public function getIsRejected(): bool
+    {
+        return $this->isRejected;
     }
 
     public function getCode(): ?string
@@ -115,6 +121,11 @@ class Visitor extends Model
     public function setIsApproved(bool $isApproved): void
     {
         $this->isApproved = $isApproved;
+    }
+
+    public function setIsRejected(bool $isRejected): void
+    {
+        $this->isRejected = $isRejected;
     }
 
     public function setCode(): void
