@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('visitors', function (Blueprint $table) {
-            $table->boolean('isRejected')->default(false);
+            $table->boolean('isRejected')->after('isApproved')->default(false);
         });
     }
 
