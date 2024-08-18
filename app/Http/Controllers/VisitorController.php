@@ -139,4 +139,18 @@ class VisitorController extends Controller
             'message' => 'Visitor deleted.'
         ], Response::HTTP_OK);
     }
+
+    public function search(string $query): JsonResponse
+    {
+        $visitors = Visitor::where('name', 'LIKE', '%' . $query . '%')
+            ->orWhere('lastName', 'LIKE', '%' . $query . '%')
+            ->orWhere('code', 'LIKE', '%' . $query . '%')
+            ->get();
+
+        $visitors->map(function (Visitor $visitor) {
+            return $visitor->serialize();
+        });
+
+        return response()->json($visitors);
+    }
 }

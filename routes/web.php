@@ -18,6 +18,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/visitors', [VisitorController::class, 'index'])->name('visitors.index');
     Route::get('/visitors/{code}', [VisitorController::class, 'show'])->name('visitors.show');
+    Route::get('/search/{query}', [VisitorController::class, 'search'])->name('visitors.search');
 });
 
 Route::post('/visitors', [VisitorController::class, 'store'])->name('visitors.store');
