@@ -142,9 +142,11 @@ class VisitorController extends Controller
 
     public function search(string $query): JsonResponse
     {
-        $visitors = Visitor::where('name', 'LIKE', '%' . $query . '%')
-            ->orWhere('lastName', 'LIKE', '%' . $query . '%')
-            ->orWhere('code', 'LIKE', '%' . $query . '%')
+        $q = '%' . $query . '%';
+
+        $visitors = Visitor::where('name', 'LIKE', $q)
+            ->orWhere('lastName', 'LIKE', $q)
+            ->orWhere('code', 'LIKE', $q)
             ->get();
 
         $visitors->map(function (Visitor $visitor) {

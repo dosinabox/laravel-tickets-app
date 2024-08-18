@@ -49,6 +49,11 @@ npm run build
 /visitors/{id}
 ```
 
+[GET] search by name / last name / code
+```
+/search/{query}
+```
+
 ## Authorization
 
 Create default user in database:

@@ -50,6 +50,10 @@ class VisitorTest extends TestCase
             ]
         );
 
+        //check missing
+        $response = $this->get('/visitors/9999999');
+        $response->assertStatus(404);
+
         //update
         $response = $this->post('/visitors/1', [
             'name' => 'Thomas',
@@ -67,11 +71,25 @@ class VisitorTest extends TestCase
             ]
         );
 
+        //search positive
+        $response = $this->get('/search/thomas');
+        $response->assertStatus(200);
+        $response->assertJsonFragment(
+            [
+                'name' => 'Thomas',
+                'lastName' => 'Elliot',
+            ]
+        );
+
+        //search negative
+        $response = $this->get('/search/joker');
+        $response->assertStatus(404);
+
         //delete
         $response = $this->delete('/visitors/1');
         $response->assertStatus(200);
 
-        //check if updated
+        //check if deleted
         $response = $this->get('/visitors');
         $response->assertStatus(200);
         $response->assertExactJson([]);
