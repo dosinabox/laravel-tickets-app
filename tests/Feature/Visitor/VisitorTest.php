@@ -83,7 +83,8 @@ class VisitorTest extends TestCase
 
         //search negative
         $response = $this->get('/search/joker');
-        $response->assertStatus(404);
+        $response->assertStatus(200);
+        $response->assertExactJson([]);
 
         //delete
         $response = $this->delete('/visitors/1');
