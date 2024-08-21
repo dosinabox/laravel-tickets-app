@@ -33,7 +33,7 @@ class VisitorTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(route('dashboard', absolute: false));
+        $response->assertRedirect(route('visitors.ui.list', absolute: false));
 
         //check if added
         $response = $this->get('/visitors');
