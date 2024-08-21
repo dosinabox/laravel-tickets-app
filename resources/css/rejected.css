@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #890000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #FFFFFF;
+    font-family: 'Roboto Condensed', Arial, sans-serif; /* Apply Roboto Condensed font */
+}
+
+.container {
+    text-align: center;
+}
+
+.title {
+    font-size: 96px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.name {
+    font-size: 24px;
+    margin: 20px 0;
+}
+
+.back-button {
+    font-size: 16px;
+    padding: 12px 24px;
+    border-radius: 20px;
+    cursor: pointer;
+    height: 44px;
+    background-color: #890000;
+    color: #fff;
+    border: solid 1px;
+}
+
+.back-button:hover {
+    background-color: #F5F5F5;
+    color: #890000;
+}

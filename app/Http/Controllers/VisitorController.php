@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Visitor;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
@@ -154,5 +155,62 @@ class VisitorController extends Controller
         });
 
         return response()->json($visitors);
+    }
+
+    public function validate(string $code): View
+    {
+        $visitor = Visitor::firstWhere('code', $code);
+
+        if (empty($visitor)) {
+            return view('visitors.notfound');
+        }
+
+        if ($visitor->getIsRejected() === true) {
+            return view('visitors.rejected', [
+                'visitor' => $visitor,
+            ]);
+        }
+
+        if ($visitor->getCategory() === Visitor::CATEGORY_VIP) {
+            return view('visitors.vip', [
+                'visitor' => $visitor,
+            ]);
+        }
+
+        return view('visitors.common', [
+            'visitor' => $visitor,
+        ]);
+    }
+
+    public function list(Request $request): View
+    {
+        $query = $request->get('query');
+
+        if (!is_null($query)) {
+            $pattern = '%' . $query . '%';
+
+            $visitors = Visitor::where('name', 'LIKE', $pattern)
+                ->orWhere('lastName', 'LIKE', $pattern)
+                ->orWhere('code', 'LIKE', $pattern)
+                ->get();
+
+            if (empty($visitors)) {
+                return view('visitors.notfound');
+            }
+        }
+
+        return view('visitors.search', [
+            'visitors' => $visitors ?? [],
+            'query' => $query,
+        ]);
+    }
+
+    public function all(): View
+    {
+        $visitors = Visitor::all();
+
+        return view('visitors.all', [
+            'visitors' => $visitors,
+        ]);
     }
 }

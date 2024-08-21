@@ -19,6 +19,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/visitors', [VisitorController::class, 'index'])->name('visitors.index');
     Route::get('/visitors/{code}', [VisitorController::class, 'show'])->name('visitors.show');
     Route::get('/search/{query}', [VisitorController::class, 'search'])->name('visitors.search');
+
+    Route::get('/ui/visitors/{code}', [VisitorController::class, 'validate'])->name('visitors.ui.validate');
+    Route::get('/ui/search', [VisitorController::class, 'list'])->name('visitors.ui.list');
+    Route::get('/ui/all', [VisitorController::class, 'all'])->name('visitors.ui.all');
 });
 
 Route::post('/visitors', [VisitorController::class, 'store'])->name('visitors.store');

@@ -1,0 +1,48 @@
+body {
+    background-color: #000000; /* Black background color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF; /* White text color */
+    font-family: 'Roboto Condensed', Arial, sans-serif; /* Apply Roboto Condensed font */
+
+    background-image: url('../img/img-full.png'), url('../img/bottom-vip.png'); /* Set the background image */
+    background-repeat: no-repeat, no-repeat; /* Do not repeat the image */
+    background-position: center 16px, left bottom 100px; /* Position the image at the center top */
+    background-size: 263px auto, 254px auto; /* Size the image, adjust as needed */
+    min-height: 100vh; /* Ensures the container takes up at least the full viewport height */
+    margin: 0; /* Reset body margins to ensure proper centering */
+    padding: 0; /* Reset body padding to ensure proper centering */
+}
+
+.container {
+    text-align: center;
+}
+
+.title {
+    font-size: 96px;
+    line-height: 112px; /* Set line height to match the font size exactly */
+    font-weight: bold;
+    margin: 0; /* Remove default margin */
+}
+
+.name {
+    font-size: 24px;
+    line-height: 28px;
+    margin-bottom: 32px;
+}
+
+.back-button {
+    font-size: 16px;
+    padding: 12px 24px;
+    background-color: #000000;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    border-radius: 20px;
+    cursor: pointer;
+    height: 44px;
+}
+
+.back-button:hover {
+    background-color: #333333;
+}

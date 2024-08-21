@@ -9,6 +9,11 @@ class Visitor extends Model
 {
     use VisitorService;
 
+    public const CATEGORY_GUEST = 'Гость';
+    public const CATEGORY_EMPLOYEE = 'Сотрудник';
+    public const CATEGORY_VIP = 'VIP';
+    public const CATEGORY_UNKNOWN = 'Без категории';
+
     protected $fillable = [
         'name',
         'lastName',
@@ -63,9 +68,9 @@ class Visitor extends Model
         return $this->email;
     }
 
-    public function getCategory(): ?string
+    public function getCategory(): string
     {
-        return $this->category;
+        return $this->category ?? self::CATEGORY_UNKNOWN;
     }
 
     public function getIsApproved(): bool
