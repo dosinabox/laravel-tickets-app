@@ -206,15 +206,6 @@ class VisitorController extends Controller
         ]);
     }
 
-    public function all(): View
-    {
-        $visitors = Visitor::all();
-
-        return view('visitors.all', [
-            'visitors' => $visitors,
-        ]);
-    }
-
     public function manage(Request $request): View
     {
         $query = $request->get('query');
