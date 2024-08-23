@@ -38,7 +38,24 @@ Email: `admin@elestonia.com`
 
 Password: `812e3e7`
 
-## Endpoints
+## Password-protected routes
+
+Search by name / last name / code
+```
+/ui/search
+```
+
+Get one visitor by code
+```
+/ui/visitors/{code}
+```
+
+Manage all visitors (assign categories or set access)
+```
+/ui/manage
+```
+
+## API endpoints
 
 [GET] all visitors
 ```

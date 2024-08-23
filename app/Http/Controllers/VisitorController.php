@@ -224,17 +224,12 @@ class VisitorController extends Controller
         return view('visitors.manage', [
             'visitors' => $visitors,
             'query' => $query,
-            'newCount' => $this->countVisitorsBy($visitors, 'category', Visitor::CATEGORY_UNKNOWN),
-            'employeesCount' => $this->countVisitorsBy($visitors, 'category', Visitor::CATEGORY_EMPLOYEE),
-            'pressCount' => $this->countVisitorsBy($visitors, 'category', Visitor::CATEGORY_PRESS),
-            'vipCount' => $this->countVisitorsBy($visitors, 'category', Visitor::CATEGORY_VIP),
-            'guestsCount' => $this->countVisitorsBy($visitors, 'category', Visitor::CATEGORY_GUEST),
-            'rejectedCount' => $this->countVisitorsBy($visitors, 'isRejected', true),
+            'newCount' => $visitors->where('category', Visitor::CATEGORY_UNKNOWN)->count(),
+            'employeesCount' => $visitors->where('category', Visitor::CATEGORY_EMPLOYEE)->count(),
+            'pressCount' => $visitors->where('category', Visitor::CATEGORY_PRESS)->count(),
+            'vipCount' => $visitors->where('category', Visitor::CATEGORY_VIP)->count(),
+            'guestsCount' => $visitors->where('category', Visitor::CATEGORY_GUEST)->count(),
+            'rejectedCount' => $visitors->where('isRejected', true)->count(),
         ]);
-    }
-
-    private function countVisitorsBy(Collection $visitors, string $key, string $value): int
-    {
-        return $visitors->where($key, $value)->count();
     }
 }
