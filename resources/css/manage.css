@@ -1,0 +1,112 @@
+body {
+    background-color: #000000; /* Black background color */
+    color: #FFFFFF; /* White text color */
+    font-family: 'Roboto Condensed', Arial, sans-serif; /* Apply Roboto Condensed font */
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #000000;
+    border-bottom: 1px solid #FFFFFF;
+    background-image: url('../img/bottom-vip.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.header h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.stats {
+    font-size: 14px;
+    margin: 0;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    padding: 10px;
+    border-radius: 20px;
+    border: 2px solid #FFFFFF;
+    background-color: #000000;
+    color: #FFFFFF;
+    outline: none;
+    width: 300px;
+    text-align: center;
+}
+
+.content {
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+thead th {
+    text-align: left;
+    padding: 10px;
+    background-color: #222222;
+}
+
+tbody tr {
+    border-bottom: 1px solid #444444;
+}
+
+tbody td {
+    padding: 10px;
+    text-align: left;
+}
+
+.btn {
+    padding: 5px 10px;
+    border-radius: 15px;
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    background-color: #000000;
+    margin-right: 5px;
+    font-size: 12px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.btn-employee {
+    background-color: #00BFFF;
+    border-color: #00BFFF;
+}
+
+.btn-press {
+    background-color: #78FB99;
+    border-color: #78FB99;
+}
+
+.btn-vip {
+    background-color: #A9A9F5;
+    border-color: #A9A9F5;
+}
+
+.btn-guest {
+    background-color: #FFA500;
+    border-color: #FFA500;
+}
+
+.btn-rejected {
+    background-color: #FF0000;
+    border-color: #FF0000;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}

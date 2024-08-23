@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Visitor;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -212,5 +213,37 @@ class VisitorController extends Controller
         return view('visitors.all', [
             'visitors' => $visitors,
         ]);
+    }
+
+    public function manage(Request $request): View
+    {
+        $query = $request->get('query');
+
+        if (!is_null($query)) {
+            $pattern = '%' . $query . '%';
+
+            $visitors = Visitor::where('name', 'LIKE', $pattern)
+                ->orWhere('lastName', 'LIKE', $pattern)
+                ->orWhere('code', 'LIKE', $pattern)
+                ->get();
+        } else {
+            $visitors = Visitor::all();
+        }
+
+        return view('visitors.manage', [
+            'visitors' => $visitors,
+            'query' => $query,
+            'newCount' => $this->countVisitorsBy($visitors, 'category', Visitor::CATEGORY_UNKNOWN),
+            'employeesCount' => $this->countVisitorsBy($visitors, 'category', Visitor::CATEGORY_EMPLOYEE),
+            'pressCount' => $this->countVisitorsBy($visitors, 'category', Visitor::CATEGORY_PRESS),
+            'vipCount' => $this->countVisitorsBy($visitors, 'category', Visitor::CATEGORY_VIP),
+            'guestsCount' => $this->countVisitorsBy($visitors, 'category', Visitor::CATEGORY_GUEST),
+            'rejectedCount' => $this->countVisitorsBy($visitors, 'isRejected', true),
+        ]);
+    }
+
+    private function countVisitorsBy(Collection $visitors, string $key, string $value): int
+    {
+        return $visitors->where($key, $value)->count();
     }
 }

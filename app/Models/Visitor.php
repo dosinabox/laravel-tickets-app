@@ -12,6 +12,7 @@ class Visitor extends Model
     public const CATEGORY_GUEST = 'Гость';
     public const CATEGORY_EMPLOYEE = 'Сотрудник';
     public const CATEGORY_VIP = 'VIP';
+    public const CATEGORY_PRESS = 'СМИ';
     public const CATEGORY_UNKNOWN = 'Без категории';
 
     protected $fillable = [
@@ -160,7 +161,6 @@ class Visitor extends Model
             'telegram' => $this->getTelegram(),
             'email' => $this->getEmail(),
             'category' => $this->getCategory(),
-            'isApproved' => $this->getIsApproved(),
             'isRejected' => $this->getIsRejected(),
             'code' => $this->getCode(),
             'created_at' => $this->getCreatedAt(),

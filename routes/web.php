@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/ui/visitors/{code}', [VisitorController::class, 'validate'])->name('visitors.ui.validate');
     Route::get('/ui/search', [VisitorController::class, 'list'])->name('visitors.ui.list');
     Route::get('/ui/all', [VisitorController::class, 'all'])->name('visitors.ui.all');
+    Route::get('/ui/manage', [VisitorController::class, 'manage'])->name('visitors.ui.manage');
 });
 
 Route::post('/visitors', [VisitorController::class, 'store'])->name('visitors.store');

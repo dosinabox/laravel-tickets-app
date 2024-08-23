@@ -8,6 +8,7 @@ export default defineConfig({
                 'resources/css/app.css',
                 'resources/css/common.css',
                 'resources/css/login.css',
+                'resources/css/manage.css',
                 'resources/css/rejected.css',
                 'resources/css/search.css',
                 'resources/css/vip.css',
