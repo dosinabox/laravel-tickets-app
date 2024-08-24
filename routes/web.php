@@ -22,9 +22,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/ui/manage', [VisitorController::class, 'manage'])->name('visitors.ui.manage');
 });
 
-Route::get('/visitors', [VisitorController::class, 'index'])->name('visitors.index');
 Route::get('/visitors/{code}', [VisitorController::class, 'show'])->name('visitors.show');
 Route::get('/search/{query}', [VisitorController::class, 'search'])->name('visitors.search');
+Route::get('/visitors', [VisitorController::class, 'index'])->name('visitors.index');
 Route::post('/visitors', [VisitorController::class, 'store'])->name('visitors.store');
 Route::post('/visitors/{id}', [VisitorController::class, 'update'])->name('visitors.update');
 Route::delete('/visitors/{id}', [VisitorController::class, 'delete'])->name('visitors.delete');

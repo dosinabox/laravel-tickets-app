@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Visitor;
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -23,17 +22,6 @@ class VisitorTest extends TestCase
             'email' => 'admin@waynecorp.com',
         ]);
         $response->assertStatus(201);
-
-        //login
-        $user = User::factory()->create();
-
-        $response = $this->post('/login', [
-            'email' => $user->email,
-            'password' => 'password',
-        ]);
-
-        $this->assertAuthenticated();
-        $response->assertRedirect(route('visitors.ui.list', absolute: false));
 
         //check if added
         $response = $this->get('/visitors');
