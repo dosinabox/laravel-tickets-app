@@ -28,7 +28,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('visitors.ui.manage', absolute: false));
+        return redirect()->intended(route('visitors.ui.search', absolute: false));
     }
 
     /**

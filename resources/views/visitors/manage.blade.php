@@ -75,7 +75,6 @@
                 handleRejectionClick(id, 1 - isRejected);
             };
         }
-
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -151,9 +150,9 @@
                     </td>
                     <td>
                         <button
-                            class="btn {{ $visitor->getIsRejected() === true ? 'btn-rejected' : '' }}"
+                            class="btn {{ $visitor->isRejected() ? 'btn-rejected' : '' }}"
                             id="btn-rejected-{{ $visitor->getID() }}"
-                            onclick="handleRejectionClick({{ $visitor->getID() }}, {{ $visitor->getIsRejected() === true ? 0 : 1 }})">
+                            onclick="handleRejectionClick({{ $visitor->getID() }}, {{ $visitor->isRejected() ? 0 : 1 }})">
                             Отказ
                         </button>
                     </td>

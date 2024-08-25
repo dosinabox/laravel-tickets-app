@@ -10,7 +10,7 @@
 <body>
 <div class="container">
     <div class="search-container">
-        <form method="GET" action="{{ route('visitors.ui.list') }}">
+        <form method="GET" action="{{ route('visitors.ui.search') }}">
             <div class="search-input-container">
              <label for="search-name">Поиск по имени, фамилии или коду</label>
                 <input type="text" id="query" name="query" value="{{ $query ?? '' }}">
@@ -22,7 +22,7 @@
         <br>
         @foreach ($visitors as $visitor)
             <a href="/ui/visitors/{{ $visitor->getCode() }}" style="color: white; text-decoration: none">
-                <p style="font-size: 24px; color: {{ $visitor->getIsRejected() ? 'red' : 'white' }};">
+                <p style="font-size: 24px; color: {{ $visitor->isRejected() ? 'red' : 'white' }};">
                     {{ $visitor->getName() }} {{ $visitor->getLastName() }} ({{ $visitor->getCategory() }})
                 </p>
             </a>

@@ -74,12 +74,12 @@ class Visitor extends Model
         return $this->category ?? self::CATEGORY_UNKNOWN;
     }
 
-    public function getIsApproved(): bool
+    public function isApproved(): bool
     {
         return $this->isApproved;
     }
 
-    public function getIsRejected(): bool
+    public function isRejected(): bool
     {
         return $this->isRejected;
     }
@@ -161,7 +161,7 @@ class Visitor extends Model
             'telegram' => $this->getTelegram(),
             'email' => $this->getEmail(),
             'category' => $this->getCategory(),
-            'isRejected' => $this->getIsRejected(),
+            'isRejected' => $this->isRejected(),
             'code' => $this->getCode(),
             'created_at' => $this->getCreatedAt(),
         ];

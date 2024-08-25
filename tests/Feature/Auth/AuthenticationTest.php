@@ -27,7 +27,7 @@ class AuthenticationTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(route('visitors.ui.manage', absolute: false));
+        $response->assertRedirect(route('visitors.ui.search', absolute: false));
     }
 
     public function test_users_can_not_authenticate_with_invalid_password(): void
