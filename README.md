@@ -42,47 +42,47 @@ Password: `812e3e7`
 
 Search by name / last name / code
 ```
-/ui/search
+/search
 ```
 
 Get one visitor by code
 ```
-/ui/visitors/{code}
+/visitor/{code}
 ```
 
 Manage all visitors (assign categories or set access)
 ```
-/ui/manage
+/manage
 ```
 
 ## API endpoints
 
 [GET] all visitors
 ```
-/visitors
+/api/v1/visitors
 ```
 
 [GET] one visitor by code
 ```
-/visitors/{code}
+/api/v1/visitor/{code}
 ```
 
 [POST] create new visitor
 ```
-/visitors
+/api/v1/visitors
 ```
 
 [POST] update one visitor by ID
 ```
-/visitors/{id}
+/api/v1/visitors/{id}
 ```
 
 [DELETE] delete one visitor by ID
 ```
-/visitors/{id}
+/api/v1/visitors/{id}
 ```
 
 [GET] search by name / last name / code
 ```
-/search/{query}
+/api/v1/search/{query}
 ```

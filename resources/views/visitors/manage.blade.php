@@ -27,7 +27,7 @@
         }
 
         function handleCategoryClick(id, category) {
-            const endpoint = '/visitors/' + id;
+            const endpoint = '/api/v1/visitors/' + id;
             const data = {
                 category: category,
             };
@@ -56,7 +56,7 @@
         }
 
         function handleRejectionClick(id, isRejected) {
-            const endpoint = '/visitors/' + id;
+            const endpoint = '/api/v1/visitors/' + id;
             const data = {
                 isRejected: isRejected,
             };

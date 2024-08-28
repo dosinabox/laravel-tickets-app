@@ -12,7 +12,7 @@ class VisitorTest extends TestCase
     public function test_add_new_visitor(): void
     {
         //add
-        $response = $this->post('/visitors', [
+        $response = $this->post('/api/v1/visitors', [
             'name' => 'Bruce',
             'lastName' => 'Wayne',
             'status' => 'vigilante',
@@ -24,7 +24,7 @@ class VisitorTest extends TestCase
         $response->assertStatus(201);
 
         //check if added
-        $response = $this->get('/visitors');
+        $response = $this->get('/api/v1/visitors');
         $response->assertStatus(200);
         $response->assertJsonFragment(
             [
@@ -39,47 +39,47 @@ class VisitorTest extends TestCase
         );
 
         //check missing
-        $response = $this->get('/visitors/9999999');
+        $response = $this->get('/api/v1/visitor/9999999999999');
         $response->assertStatus(404);
 
         //update
-        $response = $this->post('/visitors/1', [
-            'name' => 'Thomas',
-            'lastName' => 'Elliot',
+        $response = $this->post('/api/v1/visitors/1', [
+            'category' => 'VIP',
+            'isRejected' => true,
         ]);
         $response->assertStatus(200);
 
         //check if updated
-        $response = $this->get('/visitors');
+        $response = $this->get('/api/v1/visitors');
         $response->assertStatus(200);
         $response->assertJsonFragment(
             [
-                'name' => 'Thomas',
-                'lastName' => 'Elliot',
+                'category' => 'VIP',
+                'isRejected' => true,
             ]
         );
 
         //search positive
-        $response = $this->get('/search/thomas');
+        $response = $this->get('/api/v1/search/bruce');
         $response->assertStatus(200);
         $response->assertJsonFragment(
             [
-                'name' => 'Thomas',
-                'lastName' => 'Elliot',
+                'name' => 'Bruce',
+                'lastName' => 'Wayne',
             ]
         );
 
         //search negative
-        $response = $this->get('/search/joker');
+        $response = $this->get('/api/v1/search/joker');
         $response->assertStatus(200);
         $response->assertExactJson([]);
 
         //delete
-        $response = $this->delete('/visitors/1');
+        $response = $this->delete('/api/v1/visitors/1');
         $response->assertStatus(200);
 
         //check if deleted
-        $response = $this->get('/visitors');
+        $response = $this->get('/api/v1/visitors');
         $response->assertStatus(200);
         $response->assertExactJson([]);
     }

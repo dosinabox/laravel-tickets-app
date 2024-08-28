@@ -21,7 +21,7 @@
     @if(count($visitors) > 0)
         <br>
         @foreach ($visitors as $visitor)
-            <a href="/ui/visitors/{{ $visitor->getCode() }}" style="color: white; text-decoration: none">
+            <a href="{{ route('visitors.ui.show', $visitor->getCode()) }}" style="color: white; text-decoration: none">
                 <p style="font-size: 24px; color: {{ $visitor->isRejected() ? 'red' : 'white' }};">
                     {{ $visitor->getName() }} {{ $visitor->getLastName() }} ({{ $visitor->getCategory() }})
                 </p>

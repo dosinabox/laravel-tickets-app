@@ -18,16 +18,18 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/ui/visitors/{code}', [VisitorUIController::class, 'show'])->name('visitors.ui.show');
-    Route::get('/ui/search', [VisitorUIController::class, 'search'])->name('visitors.ui.search');
-    Route::get('/ui/manage', [VisitorUIController::class, 'manage'])->name('visitors.ui.manage');
+    Route::get('/visitor/{code}', [VisitorUIController::class, 'show'])->name('visitors.ui.show');
+    Route::get('/search', [VisitorUIController::class, 'search'])->name('visitors.ui.search');
+    Route::get('/manage', [VisitorUIController::class, 'manage'])->name('visitors.ui.manage');
 });
 
-Route::get('/visitors/{code}', [VisitorAPIController::class, 'show'])->name('visitors.show');
-Route::get('/search/{query}', [VisitorAPIController::class, 'search'])->name('visitors.search');
-Route::get('/visitors', [VisitorAPIController::class, 'index'])->name('visitors.index');
-Route::post('/visitors', [VisitorAPIController::class, 'store'])->name('visitors.store');
-Route::post('/visitors/{id}', [VisitorAPIController::class, 'update'])->name('visitors.update');
-Route::delete('/visitors/{id}', [VisitorAPIController::class, 'delete'])->name('visitors.delete');
+Route::prefix('api/v1')->group(function () {
+    Route::get('/visitor/{code}', [VisitorAPIController::class, 'show'])->name('visitors.api.show');
+    Route::get('/search/{query}', [VisitorAPIController::class, 'search'])->name('visitors.api.search');
+    Route::get('/visitors', [VisitorAPIController::class, 'index'])->name('visitors.api.index');
+    Route::post('/visitors', [VisitorAPIController::class, 'store'])->name('visitors.api.store');
+    Route::post('/visitors/{id}', [VisitorAPIController::class, 'update'])->name('visitors.api.update');
+    Route::delete('/visitors/{id}', [VisitorAPIController::class, 'delete'])->name('visitors.api.delete');
+});
 
 require __DIR__.'/auth.php';

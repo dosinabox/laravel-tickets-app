@@ -10,7 +10,7 @@
 <body>
 <div class="container">
     <p class="name">Посетитель не найден</p>
-    <a href="/ui/search"><button class="back-button">Назад к поиску</button></a>
+    <a href="{{ route('visitors.ui.search') }}"><button class="back-button">Назад к поиску</button></a>
 </div>
 </body>
 </html>

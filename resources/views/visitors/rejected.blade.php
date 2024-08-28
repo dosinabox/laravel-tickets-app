@@ -11,7 +11,7 @@
 <div class="container">
     <h1 class="title">Отказ</h1>
     <p class="name">{{ $visitor->getName() }}<br>{{ $visitor->getLastName() }}</p>
-    <a href="/ui/search"><button class="back-button">Назад к поиску</button></a>
+    <a href="{{ route('visitors.ui.search') }}"><button class="back-button">Назад к поиску</button></a>
 </div>
 </body>
 </html>

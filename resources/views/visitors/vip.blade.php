@@ -11,7 +11,7 @@
 <div class="container">
     <p class="title">VIP</p>
     <p class="name">{{ $visitor->getName() }}<br>{{ $visitor->getLastName() }}</p>
-    <a href="/ui/search"><button class="back-button">Назад к поиску</button></a>
+    <a href="{{ route('visitors.ui.search') }}"><button class="back-button">Назад к поиску</button></a>
 </div>
 </body>
 </html>

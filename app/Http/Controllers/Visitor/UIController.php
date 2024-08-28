@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Visitor;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Visitor\VisitorRequest;
 use App\Http\Service\VisitorService;
 use App\Models\Visitor;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class UIController extends Controller
@@ -37,11 +37,11 @@ class UIController extends Controller
         ]);
     }
 
-    public function search(Request $request): View
+    public function search(VisitorRequest $request): View
     {
-        $query = $request->get('query');
+        $query = $request->getSearchQuery();
 
-        if (!is_null($query)) {
+        if (!blank($query)) {
             $visitors = $this->searchByQuery($query);
         } else {
             $visitors = [];
@@ -53,11 +53,11 @@ class UIController extends Controller
         ]);
     }
 
-    public function manage(Request $request): View
+    public function manage(VisitorRequest $request): View
     {
-        $query = $request->get('query');
+        $query = $request->getSearchQuery();
 
-        if (!is_null($query)) {
+        if (!blank($query)) {
             $visitors = $this->searchByQuery($query);
         } else {
             $visitors = Visitor::all();

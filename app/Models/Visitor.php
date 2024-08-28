@@ -24,7 +24,6 @@ class Visitor extends Model
         'telegram',
         'email',
         'category',
-        'isApproved',
         'isRejected',
         'code'
     ];
@@ -34,37 +33,37 @@ class Visitor extends Model
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function getLastName(): ?string
+    public function getLastName(): string
     {
         return $this->lastName;
     }
 
-    public function getStatus(): ?string
+    public function getStatus(): string
     {
         return $this->status;
     }
 
-    public function getCompany(): ?string
+    public function getCompany(): string
     {
         return $this->company;
     }
 
-    public function getPhone(): ?string
+    public function getPhone(): string
     {
         return $this->phone;
     }
 
-    public function getTelegram(): ?string
+    public function getTelegram(): string
     {
         return $this->telegram;
     }
 
-    public function getEmail(): ?string
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -74,17 +73,12 @@ class Visitor extends Model
         return $this->category ?? self::CATEGORY_UNKNOWN;
     }
 
-    public function isApproved(): bool
-    {
-        return $this->isApproved;
-    }
-
     public function isRejected(): bool
     {
         return $this->isRejected;
     }
 
-    public function getCode(): ?string
+    public function getCode(): string
     {
         return $this->code;
     }
@@ -132,11 +126,6 @@ class Visitor extends Model
     public function setCategory(string $category): void
     {
         $this->category = $category;
-    }
-
-    public function setIsApproved(bool $isApproved): void
-    {
-        $this->isApproved = $isApproved;
     }
 
     public function setIsRejected(bool $isRejected): void

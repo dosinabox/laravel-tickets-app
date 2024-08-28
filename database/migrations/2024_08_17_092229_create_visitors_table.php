@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('telegram')->nullable();
             $table->string('email')->nullable();
             $table->string('category')->nullable();
-            $table->boolean('isApproved')->default(false);
+            $table->boolean('isRejected')->default(false);
             $table->string('code')->unique();
             $table->timestamps();
         });

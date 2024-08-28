@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Visitor;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Visitor\VisitorRequest;
 use App\Http\Service\VisitorService;
 use App\Models\Visitor;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
@@ -23,17 +23,17 @@ class APIController extends Controller
         return response()->json($visitors);
     }
 
-    public function store(Request $request): JsonResponse
+    public function store(VisitorRequest $request): JsonResponse
     {
         try {
             $visitor = new Visitor();
-            $visitor->setName($request->name ?? '');
-            $visitor->setLastName($request->lastName ?? '');
-            $visitor->setStatus($request->status ?? '');
-            $visitor->setCompany($request->company ?? '');
-            $visitor->setPhone($request->phone ?? '');
-            $visitor->setTelegram($request->telegram ?? '');
-            $visitor->setEmail($request->email ?? '');
+            $visitor->setName($request->getName());
+            $visitor->setLastName($request->getLastName());
+            $visitor->setStatus($request->getStatus());
+            $visitor->setCompany($request->getCompany());
+            $visitor->setPhone($request->getPhone());
+            $visitor->setTelegram($request->getTelegram());
+            $visitor->setEmail($request->getEmail());
             $visitor->setCode();
             $visitor->save();
         } catch (Throwable $exception) {
@@ -57,7 +57,7 @@ class APIController extends Controller
         return response()->json($visitor->serialize());
     }
 
-    public function update(Request $request, int $id): JsonResponse
+    public function update(VisitorRequest $request, int $id): JsonResponse
     {
         $visitor = Visitor::find($id);
 
@@ -66,39 +66,13 @@ class APIController extends Controller
         }
 
         try {
-            if (isset($request->name)) {
-                $visitor->setName($request->name);
-            }
-            if (isset($request->lastName)) {
-                $visitor->setLastname($request->lastName);
-            }
-            if (isset($request->status)) {
-                $visitor->setStatus($request->status);
-            }
-            if (isset($request->company)) {
-                $visitor->setCompany($request->company);
-            }
-            if (isset($request->phone)) {
-                $visitor->setPhone($request->phone);
-            }
-            if (isset($request->telegram)) {
-                $visitor->setTelegram($request->telegram);
-            }
-            if (isset($request->email)) {
-                $visitor->setEmail($request->email);
-            }
             if (isset($request->category)) {
-                $visitor->setCategory($request->category);
-            }
-            if (isset($request->isApproved)) {
-                $visitor->setIsApproved((bool)$request->isApproved);
+                $visitor->setCategory($request->getCategory());
             }
             if (isset($request->isRejected)) {
-                $visitor->setIsRejected((bool)$request->isRejected);
+                $visitor->setIsRejected($request->getIsRejected());
             }
-
             $visitor->save();
-
         } catch (Throwable $exception) {
             return $this->respondWithMessage(
                 'Visitor not updated: ' . $exception->getMessage(),
