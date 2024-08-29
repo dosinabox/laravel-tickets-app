@@ -60,7 +60,7 @@ class Visitor extends Model
 
     public function getTelegram(): string
     {
-        return $this->telegram;
+        return '@' . $this->telegram;
     }
 
     public function getEmail(): string
@@ -115,7 +115,7 @@ class Visitor extends Model
 
     public function setTelegram(string $telegram): void
     {
-        $this->telegram = $telegram;
+        $this->telegram = str_replace('@', '', $telegram);
     }
 
     public function setEmail(string $email): void

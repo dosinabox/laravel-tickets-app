@@ -33,7 +33,7 @@ class VisitorTest extends TestCase
                 'status' => 'vigilante',
                 'company' => 'WayneCorp',
                 'phone' => '1234567890',
-                'telegram' => 'batman',
+                'telegram' => '@batman',
                 'email' => 'admin@waynecorp.com',
             ]
         );
