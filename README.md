@@ -26,7 +26,7 @@ npm run build
 
 Create default user in database:
 ```
-php artisan db:seed --class=DatabaseSeeder
+./vendor/bin/sail artisan db:seed --class=DatabaseSeeder
 ```
 
 Go to login page:
