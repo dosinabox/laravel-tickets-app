@@ -9,10 +9,10 @@ body {
 .header {
     display: flex;
     align-items: center;
-    padding: 20px;
+    padding: 30px;
     background-color: #000000;
     border-bottom: 1px solid #FFFFFF;
-    background-image: url('../img/bottom-vip.png');
+    background-image: url('../img/img-guest.png');
     background-repeat: no-repeat;
     background-size: contain;
 }
@@ -22,6 +22,7 @@ body {
     font-weight: bold;
     margin: 0;
     flex-grow: 1;
+    padding-left: 60px;
 }
 
 .stats {
