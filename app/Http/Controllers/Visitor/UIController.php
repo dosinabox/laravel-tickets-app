@@ -32,6 +32,12 @@ class UIController extends Controller
             ]);
         }
 
+        if ($visitor->getCategory() === Visitor::CATEGORY_EMPLOYEE) {
+            return view('visitors.employee', [
+                'visitor' => $visitor,
+            ]);
+        }
+
         return view('visitors.common', [
             'visitor' => $visitor,
         ]);

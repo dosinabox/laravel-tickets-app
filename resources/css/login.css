@@ -5,7 +5,7 @@ body {
     align-items: center;
     color: #FFFFFF; /* White text color */
     font-family: 'Roboto Condensed', Arial, sans-serif; /* Apply Roboto Condensed font */
-    background-image: url('../img/img-full.png'), url('../img/bottom-vip.png'); /* Set the background image */
+    background-image: url('../img/img-vip.png'), url('../img/bottom-vip.png'); /* Set the background image */
     background-repeat: no-repeat, no-repeat; /* Do not repeat the image */
     background-position: center 16px, left bottom 100px; /* Position the image at the center top */
     background-size: 263px auto, 254px auto; /* Size the image, adjust as needed */
