@@ -7,6 +7,7 @@ use App\Http\Requests\Visitor\VisitorRequest;
 use App\Http\Service\VisitorService;
 use App\Models\Visitor;
 use Illuminate\View\View;
+use Throwable;
 
 class UIController extends Controller
 {
@@ -78,6 +79,27 @@ class UIController extends Controller
             'vipCount' => $visitors->where('category', Visitor::CATEGORY_VIP)->count(),
             'guestsCount' => $visitors->where('category', Visitor::CATEGORY_GUEST)->count(),
             'rejectedCount' => $visitors->where('isRejected', true)->count(),
+        ]);
+    }
+
+    public function import(VisitorRequest $request): View
+    {
+        $file = $request->file('file');
+
+        try {
+            if (!blank($file) && $file->isFile()) {
+                $count = $this->importVisitors($file);
+                $success = true;
+            }
+        } catch (Throwable $exception) {
+            $success = false;
+            $error = $exception->getMessage();
+        }
+
+        return view('visitors.import', [
+            'count' => $count ?? 0,
+            'success' => $success ?? false,
+            'error' => $error ?? null,
         ]);
     }
 }

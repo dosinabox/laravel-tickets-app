@@ -21,6 +21,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/visitor/{code}', [VisitorUIController::class, 'show'])->name('visitors.ui.show');
     Route::get('/search', [VisitorUIController::class, 'search'])->name('visitors.ui.search');
     Route::get('/manage', [VisitorUIController::class, 'manage'])->name('visitors.ui.manage');
+    Route::get('/import', [VisitorUIController::class, 'import'])->name('visitors.ui.import');
+    Route::post('/import', [VisitorUIController::class, 'import'])->name('visitors.ui.import');
 });
 
 Route::prefix('api/v1')->group(function () {

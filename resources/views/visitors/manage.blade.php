@@ -99,6 +99,9 @@
             <input type="text" id="query" name="query" value="{{ $query ?? '' }}" placeholder="Поиск по имени, фамилии или коду">
             <button class="btn" type="submit" style="height: 35px; width: 100px">Найти</button>
         </form>
+        <a href="{{ route('visitors.ui.import') }}">
+            <button class="btn" style="height: 35px; background: #00BFFF">Импорт XLSX</button>
+        </a>
     </div>
     <table>
         <thead>

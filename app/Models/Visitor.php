@@ -43,24 +43,24 @@ class Visitor extends Model
         return $this->lastName;
     }
 
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
-    public function getCompany(): string
+    public function getCompany(): ?string
     {
         return $this->company;
     }
 
-    public function getPhone(): string
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
 
-    public function getTelegram(): string
+    public function getTelegram(): ?string
     {
-        return '@' . $this->telegram;
+        return $this->telegram ? '@' . $this->telegram : null;
     }
 
     public function getEmail(): string
@@ -98,24 +98,24 @@ class Visitor extends Model
         $this->lastName = $lastName;
     }
 
-    public function setStatus(string $status): void
+    public function setStatus(?string $status): void
     {
         $this->status = $status;
     }
 
-    public function setCompany(string $company): void
+    public function setCompany(?string $company): void
     {
         $this->company = $company;
     }
 
-    public function setPhone(string $phone): void
+    public function setPhone(?string $phone): void
     {
         $this->phone = $phone;
     }
 
-    public function setTelegram(string $telegram): void
+    public function setTelegram(?string $telegram): void
     {
-        $this->telegram = str_replace('@', '', $telegram);
+        $this->telegram = $telegram ? str_replace('@', '', $telegram) : null;
     }
 
     public function setEmail(string $email): void
@@ -123,9 +123,9 @@ class Visitor extends Model
         $this->email = $email;
     }
 
-    public function setCategory(string $category): void
+    public function setCategory(?string $category): void
     {
-        $this->category = $category;
+        $this->category = $category ?? self::CATEGORY_UNKNOWN;
     }
 
     public function setIsRejected(bool $isRejected): void
