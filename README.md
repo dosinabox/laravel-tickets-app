@@ -35,6 +35,9 @@ server {
                 proxy_set_header   Host $http_host;
                 proxy_pass         "http://127.0.0.1:8080";
         }
+
+        # add when https is ready (if you get mixed content warnings)
+        # add_header 'Content-Security-Policy' 'upgrade-insecure-requests';
 }
 ```
 
