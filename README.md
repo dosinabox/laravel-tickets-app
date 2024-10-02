@@ -1,5 +1,6 @@
 ## Requirements
 
+- nginx
 - Composer
 - Docker
 - docker-compose
@@ -9,11 +10,32 @@
 ## Build and start
 
 ```
+cp .env.example .env
 composer install
 ./vendor/bin/sail up -d
 ./vendor/bin/sail artisan migrate
 npm install
 npm run build
+```
+
+## Port forwarding
+
+/etc/nginx/sites-enabled/default:
+```
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        root /var/www/html;
+
+        server_name yourdomain.com;
+
+        location / {
+                proxy_set_header   X-Forwarded-For $remote_addr;
+                proxy_set_header   Host $http_host;
+                proxy_pass         "http://127.0.0.1:8080";
+        }
+}
 ```
 
 ## Stop
