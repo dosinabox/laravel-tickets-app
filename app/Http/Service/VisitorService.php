@@ -54,6 +54,10 @@ trait VisitorService
             $visitor->setPhone($item['phone']);
             $visitor->setTelegram($item['telegram']);
             $visitor->setCategory($item['category']);
+            $visitor->setCompany($item['company']);
+            $visitor->setPosition($item['position']);
+            $visitor->setStatus($item['status']);
+            $visitor->setIsRejected($item['isrejected'] ?? false);
 
             $visitor->save();
             ++$count;

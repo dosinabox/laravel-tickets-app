@@ -25,6 +25,13 @@ class VisitorsExport implements FromCollection, WithHeadings, WithMapping, WithC
             'email',
             'telegram',
             'category',
+            'company',
+            'position',
+            'code',
+            'id',
+            'createdAt',
+            'status',
+            'isRejected',
         ];
     }
 
@@ -37,6 +44,13 @@ class VisitorsExport implements FromCollection, WithHeadings, WithMapping, WithC
             $row->getEmail(),
             $row->getTelegram(),
             $row->getCategory(),
+            $row->getCompany(),
+            $row->getPosition(),
+            $row->getCode(),
+            $row->getID(),
+            $row->getCreatedAt(),
+            $row->getStatus(),
+            $row->isRejected(),
         ];
     }
 

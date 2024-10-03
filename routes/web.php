@@ -13,12 +13,12 @@ Route::get('/dashboard', static function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/visitor/{code}', [VisitorUIController::class, 'show'])->name('visitors.ui.show');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-    Route::get('/visitor/{code}', [VisitorUIController::class, 'show'])->name('visitors.ui.show');
     Route::get('/search', [VisitorUIController::class, 'search'])->name('visitors.ui.search');
     Route::get('/manage', [VisitorUIController::class, 'manage'])->name('visitors.ui.manage');
     Route::get('/import', [VisitorUIController::class, 'import'])->name('visitors.ui.import');

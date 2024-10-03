@@ -73,7 +73,7 @@ class UIController extends Controller
         }
 
         return view('visitors.manage', [
-            'visitors' => $visitors,
+            'visitors' => $visitors->sortByDesc('created_at'),
             'query' => $query,
             'newCount' => $visitors->where('category', Visitor::CATEGORY_UNKNOWN)->count(),
             'employeesCount' => $visitors->where('category', Visitor::CATEGORY_EMPLOYEE)->count(),
@@ -110,9 +110,7 @@ class UIController extends Controller
         try {
             return $this->exportVisitors();
         } catch (Throwable $exception) {
-            $error = $exception->getMessage();
+            return redirect()->route('visitors.ui.manage')->with('error', $exception->getMessage());
         }
-
-        return redirect()->route('visitors.ui.manage')->with('error', $error);
     }
 }
