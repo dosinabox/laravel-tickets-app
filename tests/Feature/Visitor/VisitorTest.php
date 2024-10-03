@@ -2,7 +2,10 @@
 
 namespace Tests\Feature\Visitor;
 
+use App\Exports\VisitorsExport;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Maatwebsite\Excel\Facades\Excel;
 use Tests\TestCase;
 
 class VisitorTest extends TestCase
@@ -37,6 +40,16 @@ class VisitorTest extends TestCase
                 'email' => 'admin@waynecorp.com',
             ]
         );
+
+        //check if visitors can be exported
+        Excel::fake();
+
+        $user = User::factory()->create();
+        $this->actingAs($user)->get('/export');
+
+        Excel::assertDownloaded('visitors.xlsx', static function(VisitorsExport $export) {
+            return $export->collection()->contains('email', 'admin@waynecorp.com');
+        });
 
         //check missing
         $response = $this->get('/api/v1/visitor/9999999999999');
