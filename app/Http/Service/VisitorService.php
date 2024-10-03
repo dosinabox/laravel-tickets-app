@@ -2,12 +2,14 @@
 
 namespace App\Http\Service;
 
+use App\Exports\VisitorsExport;
 use App\Imports\VisitorsImport;
 use App\Models\Visitor;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 trait VisitorService
 {
@@ -58,5 +60,10 @@ trait VisitorService
         }
 
         return $count;
+    }
+
+    public function exportVisitors(): BinaryFileResponse
+    {
+        return Excel::download(new VisitorsExport(), 'visitors.xlsx');
     }
 }

@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/manage', [VisitorUIController::class, 'manage'])->name('visitors.ui.manage');
     Route::get('/import', [VisitorUIController::class, 'import'])->name('visitors.ui.import');
     Route::post('/import', [VisitorUIController::class, 'import'])->name('visitors.ui.import');
+    Route::get('/export', [VisitorUIController::class, 'export'])->name('visitors.ui.export');
 });
 
 Route::prefix('api/v1')->group(function () {

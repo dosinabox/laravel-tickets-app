@@ -102,6 +102,9 @@
         <a href="{{ route('visitors.ui.import') }}">
             <button class="btn" style="height: 35px; background: #00BFFF">Импорт XLSX</button>
         </a>
+        <a href="{{ route('visitors.ui.export') }}">
+            <button class="btn" style="height: 35px">Шаблон XLSX</button>
+        </a>
     </div>
     <table>
         <thead>

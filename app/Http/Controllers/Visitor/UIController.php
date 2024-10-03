@@ -7,6 +7,7 @@ use App\Http\Requests\Visitor\VisitorRequest;
 use App\Http\Service\VisitorService;
 use App\Models\Visitor;
 use Illuminate\View\View;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Throwable;
 
 class UIController extends Controller
@@ -101,5 +102,10 @@ class UIController extends Controller
             'success' => $success ?? false,
             'error' => $error ?? null,
         ]);
+    }
+
+    public function export(): BinaryFileResponse
+    {
+        return $this->exportVisitors();
     }
 }
