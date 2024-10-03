@@ -15,8 +15,8 @@ class VisitorTest extends TestCase
         $response = $this->post('/api/v1/visitors', [
             'name' => 'Bruce',
             'lastName' => 'Wayne',
-            'status' => 'vigilante',
             'company' => 'WayneCorp',
+            'position' => 'vigilante',
             'phone' => '1234567890',
             'telegram' => 'batman',
             'email' => 'admin@waynecorp.com',
@@ -30,8 +30,8 @@ class VisitorTest extends TestCase
             [
                 'name' => 'Bruce',
                 'lastName' => 'Wayne',
-                'status' => 'vigilante',
                 'company' => 'WayneCorp',
+                'position' => 'vigilante',
                 'phone' => '1234567890',
                 'telegram' => '@batman',
                 'email' => 'admin@waynecorp.com',
