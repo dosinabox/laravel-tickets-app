@@ -29,8 +29,8 @@ class APIController extends Controller
             $visitor = new Visitor();
             $visitor->setName($request->getName());
             $visitor->setLastName($request->getLastName());
-            $visitor->setStatus($request->getStatus());
             $visitor->setCompany($request->getCompany());
+            $visitor->setPosition($request->getPosition());
             $visitor->setPhone($request->getPhone());
             $visitor->setTelegram($request->getTelegram());
             $visitor->setEmail($request->getEmail());

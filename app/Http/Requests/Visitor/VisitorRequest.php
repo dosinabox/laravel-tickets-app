@@ -26,6 +26,11 @@ class VisitorRequest extends FormRequest
         return $this->get('company', '');
     }
 
+    public function getPosition(): string
+    {
+        return $this->get('position', '');
+    }
+
     public function getPhone(): string
     {
         return $this->get('phone', '');

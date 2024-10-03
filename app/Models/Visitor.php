@@ -20,6 +20,7 @@ class Visitor extends Model
         'lastName',
         'status',
         'company',
+        'position',
         'phone',
         'telegram',
         'email',
@@ -51,6 +52,11 @@ class Visitor extends Model
     public function getCompany(): ?string
     {
         return $this->company;
+    }
+
+    public function getPosition(): ?string
+    {
+        return $this->position;
     }
 
     public function getPhone(): ?string
@@ -108,6 +114,11 @@ class Visitor extends Model
         $this->company = $company;
     }
 
+    public function setPosition(?string $position): void
+    {
+        $this->position = $position;
+    }
+
     public function setPhone(?string $phone): void
     {
         $this->phone = $phone;
@@ -144,13 +155,14 @@ class Visitor extends Model
             'id' => $this->getID(),
             'name' => $this->getName(),
             'lastName' => $this->getLastName(),
-            'status' => $this->getStatus(),
             'company' => $this->getCompany(),
+            'position' => $this->getPosition(),
             'phone' => $this->getPhone(),
             'telegram' => $this->getTelegram(),
             'email' => $this->getEmail(),
             'category' => $this->getCategory(),
             'isRejected' => $this->isRejected(),
+            'status' => $this->getStatus(),
             'code' => $this->getCode(),
             'created_at' => $this->getCreatedAt(),
         ];
