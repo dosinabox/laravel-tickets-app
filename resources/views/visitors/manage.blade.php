@@ -130,7 +130,7 @@
                     <td>{{ $visitor->getCreatedAt() }}</td>
                     <td>{{ $visitor->getName() }} {{ $visitor->getLastName() }}</td>
                     <td>{{ $visitor->getCompany() }}</td>
-                    <td>{{ $visitor->getStatus() }}</td>
+                    <td>{{ $visitor->getPosition() }}</td>
                     <td>
                         <button
                             class="btn {{ $visitor->getCategory() === \App\Models\Visitor::CATEGORY_EMPLOYEE ? 'btn-employee' : '' }}"
