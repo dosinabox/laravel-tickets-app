@@ -103,8 +103,11 @@
             <button class="btn" style="height: 35px; background: #00BFFF">Импорт XLSX</button>
         </a>
         <a href="{{ route('visitors.ui.export') }}">
-            <button class="btn" style="height: 35px">Шаблон XLSX</button>
+            <button class="btn" style="height: 35px; background: #00BFFF">Шаблон XLSX</button>
         </a>
+        @if(session('error'))
+            <span style="color: #FF2D20">Ошибка экспорта: {{ session('error') }}</span>
+        @endif
     </div>
     <table>
         <thead>

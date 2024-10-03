@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Visitor\VisitorRequest;
 use App\Http\Service\VisitorService;
 use App\Models\Visitor;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Throwable;
@@ -104,8 +105,14 @@ class UIController extends Controller
         ]);
     }
 
-    public function export(): BinaryFileResponse
+    public function export(): BinaryFileResponse|RedirectResponse
     {
-        return $this->exportVisitors();
+        try {
+            return $this->exportVisitors();
+        } catch (Throwable $exception) {
+            $error = $exception->getMessage();
+        }
+
+        return redirect()->route('visitors.ui.manage')->with('error', $error);
     }
 }
