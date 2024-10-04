@@ -34,12 +34,12 @@ class Visitor extends Model
         return $this->id;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function getLastName(): string
+    public function getLastName(): ?string
     {
         return $this->lastName;
     }
@@ -69,7 +69,7 @@ class Visitor extends Model
         return $this->telegram ? '@' . $this->telegram : null;
     }
 
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -94,12 +94,12 @@ class Visitor extends Model
         return date_create($this->created_at)->format('d.m.Y H:i');
     }
 
-    public function setName(string $name): void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
 
-    public function setLastName(string $lastName): void
+    public function setLastName(?string $lastName): void
     {
         $this->lastName = $lastName;
     }
@@ -129,7 +129,7 @@ class Visitor extends Model
         $this->telegram = $telegram ? str_replace('@', '', $telegram) : null;
     }
 
-    public function setEmail(string $email): void
+    public function setEmail(?string $email): void
     {
         $this->email = $email;
     }
