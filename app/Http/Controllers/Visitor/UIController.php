@@ -75,7 +75,7 @@ class UIController extends Controller
         return view('visitors.manage', [
             'visitors' => $visitors->sortByDesc('created_at'),
             'query' => $query,
-            'newCount' => $visitors->where('category', Visitor::CATEGORY_UNKNOWN)->count(),
+            'newCount' => $visitors->whereNull('category')->count(),
             'employeesCount' => $visitors->where('category', Visitor::CATEGORY_EMPLOYEE)->count(),
             'pressCount' => $visitors->where('category', Visitor::CATEGORY_PRESS)->count(),
             'vipCount' => $visitors->where('category', Visitor::CATEGORY_VIP)->count(),
