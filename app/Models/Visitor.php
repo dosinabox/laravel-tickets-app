@@ -18,7 +18,6 @@ class Visitor extends Model
     protected $fillable = [
         'name',
         'lastName',
-        'status',
         'company',
         'position',
         'phone',
@@ -26,6 +25,7 @@ class Visitor extends Model
         'email',
         'category',
         'isRejected',
+        'status',
         'code'
     ];
 

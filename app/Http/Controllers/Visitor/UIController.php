@@ -88,14 +88,13 @@ class UIController extends Controller
     {
         $file = $request->file('file');
 
-        try {
-            if (!blank($file) && $file->isFile()) {
+        if ($file->isFile()) {
+            try {
                 $count = $this->importVisitors($file);
                 $success = true;
+            } catch (Throwable $exception) {
+                $error = $exception->getMessage();
             }
-        } catch (Throwable $exception) {
-            $success = false;
-            $error = $exception->getMessage();
         }
 
         return view('visitors.import', [
