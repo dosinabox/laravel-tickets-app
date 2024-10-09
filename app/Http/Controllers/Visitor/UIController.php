@@ -29,19 +29,7 @@ class UIController extends Controller
             ]);
         }
 
-        if ($visitor->getCategory() === Visitor::CATEGORY_VIP) {
-            return view('visitors.vip', [
-                'visitor' => $visitor,
-            ]);
-        }
-
-        if ($visitor->getCategory() === Visitor::CATEGORY_EMPLOYEE) {
-            return view('visitors.employee', [
-                'visitor' => $visitor,
-            ]);
-        }
-
-        return view('visitors.common', [
+        return view('visitors.show', [
             'visitor' => $visitor,
         ]);
     }
@@ -111,5 +99,23 @@ class UIController extends Controller
         } catch (Throwable $exception) {
             return redirect()->route('visitors.ui.manage')->with('error', $exception->getMessage());
         }
+    }
+
+    public function pass(string $code): View|RedirectResponse
+    {
+        $visitor = Visitor::firstWhere('code', $code);
+
+        if (blank($visitor)) {
+            return view('visitors.notfound');
+        }
+
+        try {
+            $this->setValidatedStatus($visitor);
+        } catch (Throwable $exception) {
+            return redirect()->route('visitors.ui.show', ['code' => $code])
+                ->with('error', $exception->getMessage());
+        }
+
+        return redirect()->route('visitors.ui.show', ['code' => $code]);
     }
 }

@@ -115,7 +115,6 @@
             <th>Дата и время</th>
             <th>Имя и фамилия</th>
             <th>Компания</th>
-            <th>Должность</th>
             <th>Категория</th>
             <th>Отказ</th>
             <th>Телеграм</th>
@@ -130,7 +129,6 @@
                     <td>{{ $visitor->getCreatedAt() }}</td>
                     <td>{{ $visitor->getName() }} {{ $visitor->getLastName() }}</td>
                     <td>{{ $visitor->getCompany() }}</td>
-                    <td>{{ $visitor->getPosition() }}</td>
                     <td>
                         <button
                             class="btn {{ $visitor->getCategory() === \App\Models\Visitor::CATEGORY_EMPLOYEE ? 'btn-employee' : '' }}"

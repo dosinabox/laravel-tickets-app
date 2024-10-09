@@ -70,4 +70,10 @@ trait VisitorService
     {
         return Excel::download(new VisitorsExport(), 'visitors.xlsx');
     }
+
+    public function setValidatedStatus(Visitor $visitor): void
+    {
+        $visitor->setStatus(Visitor::STATUS_VALIDATED);
+        $visitor->save();
+    }
 }

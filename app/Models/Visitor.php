@@ -15,6 +15,8 @@ class Visitor extends Model
     public const CATEGORY_PRESS = 'СМИ';
     public const CATEGORY_UNKNOWN = 'Без категории';
 
+    public const STATUS_VALIDATED = 'Билет использован';
+
     protected $fillable = [
         'name',
         'lastName',
