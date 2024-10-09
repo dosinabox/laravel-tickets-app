@@ -76,7 +76,7 @@ class UIController extends Controller
     {
         $file = $request->file('file');
 
-        if ($file->isFile()) {
+        if (!blank($file) && $file->isFile()) {
             try {
                 $count = $this->importVisitors($file);
                 $success = true;

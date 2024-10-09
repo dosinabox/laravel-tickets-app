@@ -128,7 +128,7 @@
                 <tr>
                     <td>{{ $visitor->getCreatedAt() }}</td>
                     <td>{{ $visitor->getName() }} {{ $visitor->getLastName() }}</td>
-                    <td>{{ $visitor->getCompany() }}</td>
+                    <td>{{ Str::limit($visitor->getCompany(), 30) }}</td>
                     <td>
                         <button
                             class="btn {{ $visitor->getCategory() === \App\Models\Visitor::CATEGORY_EMPLOYEE ? 'btn-employee' : '' }}"
