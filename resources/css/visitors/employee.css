@@ -6,7 +6,7 @@ body {
     color: #FFFFFF; /* White text color */
     font-family: 'Roboto Condensed', Arial, sans-serif; /* Apply Roboto Condensed font */
 
-    background-image: url('../img/img-employee.png'); /* Set the background image */
+    background-image: url('../../img/img-employee.png'); /* Set the background image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-position: center 16px; /* Position the image at the center top */
     background-size: 240px auto; /* Size the image, adjust as needed */

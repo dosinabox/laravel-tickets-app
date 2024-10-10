@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $visitor->getCategory() }}</title>
     @if($visitor->getCategory() === \App\Models\Visitor::CATEGORY_EMPLOYEE)
-        @vite(['resources/css/employee.css'])
+        @vite(['resources/css/visitors/employee.css'])
     @elseif($visitor->getCategory() === \App\Models\Visitor::CATEGORY_VIP)
-        @vite(['resources/css/vip.css'])
+        @vite(['resources/css/visitors/vip.css'])
     @else
-        @vite(['resources/css/common.css'])
+        @vite(['resources/css/visitors/common.css'])
     @endif
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
 </head>
